@@ -22,8 +22,8 @@ const users = [
 app.get(
   '/users',
   (req, res) => {
-    const page = req.body.page
-    const limit = req.body.limit
+    const page = req.query.page
+    const limit = req.query.limit
 
     const startIndex = (page - 1) * limit
     const endIndex = page * limit
