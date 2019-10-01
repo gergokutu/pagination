@@ -22,7 +22,14 @@ const users = [
 app.get(
   '/users',
   (req, res) => {
-    res.json(users)
+    const page = req.body.page
+    const limit = req.body.limit
+
+    const startIndex = (page - 1) * limit
+    const endIndex = page * limit
+
+    const resultUsers = users.slice(startIndex, endIndex)
+    res.json(resultUsers)
   }
 )
 
